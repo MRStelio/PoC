@@ -1,5 +1,5 @@
 #!/bin/bash
-#
+
 docker build -t project -f docker_build/project/Dockerfile .
 docker run \
 --name project-test \
@@ -20,9 +20,12 @@ docker run \
 --name mysql \
 mysql:5.7.35
 
+chmod -R \777 database
+
 > .env
 echo DB_HOST=\"127.0.0.1\" >> .env
 echo DB_USER=\"root\" >> .env
 echo DB_PASSWORD=\"123456789\" >> .env
 echo DB_USED=\"test\" >> .env
 echo DB_PORT=\"10021\" >> .env
+echo TESTDATA_URL_SOURCE=\"https://jsonplaceholder.typicode.com/users\"

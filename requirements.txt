@@ -2,3 +2,4 @@ pytest
 selenium
 mysql-connector-python
 python-dotenv
+requests

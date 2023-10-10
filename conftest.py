@@ -1,5 +1,6 @@
 import pytest
 import Framework.logger as logger
+import Framework.testdata as testdata
 from selenium.webdriver.chrome.options import Options
 from selenium import webdriver
 
@@ -53,3 +54,12 @@ def pytest_sessionfinish(session):
     """Запись логов в файл."""
 
     logger.write_logs(str(session.results).replace(', ', '\n'))
+
+
+@pytest.fixture(scope='session')
+def get_test_data():
+    """Фикстура для получения тестовых данных.
+    Используется единовременно перед началом тестовой сессии в классе TestBase.
+    """
+
+    testdata.create_test_data()

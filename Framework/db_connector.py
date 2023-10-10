@@ -32,16 +32,16 @@ class DatabaseConnector:
         Если не передавать id, берется последняя запись в таблице.
         """
 
-        query_result = {}
+        query_result = None
         if id_testdata is None:
             self.cursor.execute("SELECT id, testdata FROM testdata ORDER BY id DESC LIMIT 1")
             for id, testdata in self.cursor:
-                query_result[id] = testdata
+                query_result = testdata
 
         else:
             self.cursor.execute(f"SELECT id, testdata FROM testdata WHERE id={id_testdata}")
             for id, testdata in self.cursor:
-                query_result[id] = testdata
+                query_result = testdata
 
         self.db.close()
         return query_result
