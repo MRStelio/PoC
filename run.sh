@@ -1,2 +1,1 @@
-request_users
-exec
+docker exec project-test pytest

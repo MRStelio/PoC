@@ -29,4 +29,7 @@ class BasePage:
         field.clear()
         field.send_keys(value)
 
+    def switch_window(self, window_id):
+        """Переключение окна для вебрайвера."""
 
+        self.driver.switch_to.window(self.driver.window_handles[window_id])
